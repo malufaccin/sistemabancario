@@ -61,42 +61,43 @@ export default function App() {
   return (
     <div>
       <Header />
-      
-      {!clienteSelecionado && (
-        <Controls onSearch={setTermoBusca} onFilter={setFiltroAgencia} />
-      )}
   
       {!clienteSelecionado ? (
-        <>
+        <section className="conteudo-principal">
+          <Controls onSearch={setTermoBusca} onFilter={setFiltroAgencia} />
+  
           <div className="lista-clientes" style={{ paddingTop: "10px" }}>
             {clientesPagina.map((cliente) => (
               <ClienteCard
                 key={cliente.id}
                 cliente={cliente}
                 onSelect={(id) => {
-                  const selecionado = clientes.find(c => c.id === id); //encontra o cliente pelo id selecionado
+                  const selecionado = clientes.find(c => c.id === id);
                   if (selecionado) {
                     setClienteSelecionado(selecionado);
                   }
                 }}
-              />            
+              />
             ))}
           </div>
+  
           <Paginacao
             paginaAtual={pagina}
             totalPaginas={totalPaginas}
-            onAnterior={() => setPagina(p => Math.max(1, p - 1))} //determina que o min de páginas é 1
-            onProxima={() => setPagina(p => Math.min(totalPaginas, p + 1))} //não deixa passar do total de páginas estabelecido
+            onAnterior={() => setPagina(p => Math.max(1, p - 1))}
+            onProxima={() => setPagina(p => Math.min(totalPaginas, p + 1))}
           />
-        </>
+        </section>
       ) : (
+        <section className="conteudo-principal">
         <DetalhesCliente
           cliente={clienteSelecionado}
           contas={contasCliente(clienteSelecionado)}
           agencia={agenciaCliente(clienteSelecionado)}
           onVoltar={() => setClienteSelecionado(null)}
         />
+        </section>
       )}
     </div>
-  );  
+  );
 }

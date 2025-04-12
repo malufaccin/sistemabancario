@@ -13,6 +13,7 @@ interface Props {
 
 export function DetalhesCliente({ cliente, contas, agencia, onVoltar }: Props) {
   return (
+    
     <div className="detalhes" style={{ padding: "20px" }}>
       <h2>Informações do Cliente</h2>
       <p><strong>Nome:</strong> {cliente.nome}</p>
