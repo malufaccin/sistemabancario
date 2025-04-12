@@ -5,7 +5,6 @@ interface Props {
   cliente: Cliente;
   onSelect: (id: string) => void;
 }
-
 export function ClienteCard({ cliente, onSelect }: Props) {
   return (
     <div className="card">
@@ -16,3 +15,6 @@ export function ClienteCard({ cliente, onSelect }: Props) {
     </div>
   );
 }
+//criar cards com os clientes
+// usar a função formatarCpfCnpj pra deixar organizado
+// mostrar "não informado" quando este for o caso

@@ -1,4 +1,4 @@
-/* CORES */
+/* separação das cores pra manter mais organizado */
 :root {
   --bg-body: #E7ECEF;
   --header: #274C77;
@@ -7,7 +7,6 @@
   --cinza: #8B8C89;
 }
 
-/* BASE RESPONSIVA */
 body {
   font-family: Arial, sans-serif;
   background: var(--bg-body);
@@ -17,14 +16,13 @@ body {
   color: #333;
 }
 
-/* CABEÇALHO 100% LARGURA */
 .header {
   background: var(--header);
+  position: fixed;
   color: white;
   padding: 15px 0;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   width: 100%;
-  height: 60px;
   width: 100%;
   top: 0;
   left: 0;
@@ -38,12 +36,10 @@ body {
 }
 
 .main-content {
-  margin-top: 60px; /* Deve ser igual à altura do header */
+  margin-top: 70px; 
   padding: 20px;
 }
 
-
-/* CONTROLES CENTRALIZADOS E ESTILIZADOS */
 .controls container {
   display: flex;
   flex-direction: column;
@@ -93,7 +89,6 @@ body {
   text-align: center;
 }
 
-/* Layout responsivo */
 @media (max-width: 768px) {
   .controls-container {
     margin: 20px;
@@ -106,7 +101,6 @@ body {
   }
 }
 
-/* LISTA DE CLIENTES EM GRID 5x2 */
 .lista-clientes {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -135,23 +129,16 @@ body {
   font-size: 0.9rem;
 }
 
-/* BADGE VCP */
-.card p:last-child {
-  color: var(--header);
-  font-weight: bold;
-  margin-top: 10px;
-  font-size: 0.8rem;
-}
-
-/* PAGINAÇÃO */
 .paginacao {
   text-align: center;
   padding: 20px;
   color: var(--header);
   grid-column: 1 / -1;
 }
-
-/* RESPONSIVIDADE - AJUSTE PARA TELAS MENORES */
+#paginas{
+  margin-left: 20px;
+  margin-right: 20px;
+}
 @media (max-width: 1600px) {
   .lista-clientes {
     grid-template-columns: repeat(4, 1fr);

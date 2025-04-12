@@ -2,14 +2,14 @@ import Papa, { ParseResult } from "papaparse";
 import { Cliente, Conta, Agencia } from "../types/types";
 
 function carregarCSV<T>(path: string, tipo: "cliente" | "conta" | "agencia"): Promise<T[]> {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => { //usar a biblioteca papaparse pra processar os arquivos csv
     Papa.parse(path, {
-      download: true,
-      header: true,
-      skipEmptyLines: true,
+      download: true, //baixar arquivo
+      header: true, //usar a 1ª linha como header
+      skipEmptyLines: true, //pular linhas vazias
       complete: (results: ParseResult<any>) => {
         try {
-          const dadosConvertidos = results.data.map((item: any) => {
+          const dadosConvertidos = results.data.map((item: any) => { //fazer conversões necessárias para processamento dos dados
             if (tipo === "cliente") {
               return {
                 ...item,
@@ -50,7 +50,9 @@ function carregarCSV<T>(path: string, tipo: "cliente" | "conta" | "agencia"): Pr
     });
   });
 }
+//tratamento de erros ^
 
+//carregar dados dos arquivos csv 
 export async function carregarClientes() {
   return carregarCSV<Cliente>("/clientes.csv", "cliente");
 }

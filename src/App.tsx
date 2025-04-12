@@ -19,7 +19,7 @@ export default function App() {
 
   useEffect(() => {
     async function carregarTudo() {
-      const [clientesRaw, contas, agencias] = await Promise.all([
+      const [clientesRaw, contas, agencias] = await Promise.all([ //Carregando os dados assincronamente
         carregarClientes(),
         carregarContas(),
         carregarAgencias()
@@ -30,7 +30,7 @@ export default function App() {
         codigosAgenciasValidas.includes(cliente.codigoAgencia)
       );
   
-      setClientes(clientesFiltrados);
+      setClientes(clientesFiltrados); //atualizando os dados
       setContas(contas);
       setAgencias(agencias);
     }
@@ -38,21 +38,23 @@ export default function App() {
     carregarTudo();
   }, []);
 
-  const clientesFiltrados = clientes.filter(c => {
+  const clientesFiltrados = clientes.filter(c => { //função para filtrar os clientes por nome ou cpf/cnpj
     const nomeValido = c.nome?.toLowerCase() || '';
     const busca = nomeValido.includes(termoBusca.toLowerCase()) || c.cpfCnpj?.includes(termoBusca);
-    const filtro = filtroAgencia ? c.codigoAgencia.toString() === filtroAgencia : true;
+    const filtro = filtroAgencia ? c.codigoAgencia.toString() === filtroAgencia : true; //filtro por agencia
     return busca && filtro;
   });
 
-  const totalPaginas = Math.ceil(clientesFiltrados.length / 10); // cada página com 10
-  const clientesPagina = clientesFiltrados.slice((pagina - 1) * 10, pagina * 10);
+  const totalPaginas = Math.ceil(clientesFiltrados.length / 10); // cada página com 10 cards apenas
+  const clientesPagina = clientesFiltrados.slice((pagina - 1) * 10, pagina * 10); //divide o arquivo de 10 em 10 (slice)
 
-  const agenciaCliente = (cliente: Cliente) =>
+  //retornat agencias e contas do cliente para apresentar
+  const agenciaCliente = (cliente: Cliente) => 
     agencias.find((a) => a.codigo === cliente.codigoAgencia)!;
   const contasCliente = (cliente: Cliente) =>
     contas.filter((c) => c.id === cliente.id);
 
+  //caso o site demore carregar, aparecerá uma mensagem
   if (!clientes.length || !contas.length || !agencias.length) {
     return <div style={{ padding: 20 }}>Carregando dados...</div>;
   }
@@ -72,7 +74,7 @@ export default function App() {
                 key={cliente.id}
                 cliente={cliente}
                 onSelect={(id) => {
-                  const selecionado = clientes.find(c => c.id === id);
+                  const selecionado = clientes.find(c => c.id === id); //encontra o cliente pelo id selecionado
                   if (selecionado) {
                     setClienteSelecionado(selecionado);
                   }
@@ -83,8 +85,8 @@ export default function App() {
           <Paginacao
             paginaAtual={pagina}
             totalPaginas={totalPaginas}
-            onAnterior={() => setPagina(p => Math.max(1, p - 1))}
-            onProxima={() => setPagina(p => Math.min(totalPaginas, p + 1))}
+            onAnterior={() => setPagina(p => Math.max(1, p - 1))} //determina que o min de páginas é 1
+            onProxima={() => setPagina(p => Math.min(totalPaginas, p + 1))} //não deixa passar do total de páginas estabelecido
           />
         </>
       ) : (

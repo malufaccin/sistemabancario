@@ -1,3 +1,6 @@
+//criar pagina de detalhes dos clientes
+//mostrar cliente, conta e agencia
+//botão de voltar ao final da página
 import { Cliente, Conta, Agencia } from "../types/types";
 import { formatarCpfCnpj } from "../util/formatarCpfCnpj"; 
 
