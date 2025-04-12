@@ -3,6 +3,7 @@
 //botão de voltar ao final da página
 import { Cliente, Conta, Agencia } from "../types/types";
 import { formatarCpfCnpj } from "../util/formatarCpfCnpj"; 
+import {formatarRg} from "../util/formatarRg"; 
 
 interface Props {
   cliente: Cliente;
@@ -13,13 +14,13 @@ interface Props {
 
 export function DetalhesCliente({ cliente, contas, agencia, onVoltar }: Props) {
   return (
-    
+
     <div className="detalhes" style={{ padding: "20px" }}>
       <h2>Informações do Cliente</h2>
       <p><strong>Nome:</strong> {cliente.nome}</p>
       {cliente.nomeSocial && <p><strong>Nome Social:</strong> {cliente.nomeSocial}</p>}
       <p><strong>CPF/CNPJ:</strong>{" "}{cliente.cpfCnpj ? formatarCpfCnpj(cliente.cpfCnpj) : "Não informado"}</p>
-      {cliente.rg && <p><strong>RG:</strong> {cliente.rg}</p>}
+      <p><strong>RG:</strong>{" "}{cliente.rg ? formatarRg(cliente.rg) : "Não informado"}</p>
       <p><strong>Data de nascimento:</strong> {new Date(cliente.dataNascimento).toLocaleDateString()}</p>
       <p><strong>Email:</strong> {cliente.email}</p>
       <p><strong>Endereço:</strong> {cliente.endereco}</p>
