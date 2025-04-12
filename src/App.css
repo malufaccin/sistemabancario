@@ -1,0 +1,181 @@
+/* CORES */
+:root {
+  --bg-body: #E7ECEF;
+  --header: #274C77;
+  --destaque: #6096BA;
+  --secundaria: #A3CEF1;
+  --cinza: #8B8C89;
+}
+
+/* BASE RESPONSIVA */
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg-body);
+  margin-top: 20px;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* CABEÇALHO 100% LARGURA */
+.header {
+  background: var(--header);
+  color: white;
+  padding: 15px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: 100%;
+  height: 60px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  padding: 0 20px;
+}
+
+.main-content {
+  margin-top: 60px; /* Deve ser igual à altura do header */
+  padding: 20px;
+}
+
+
+/* CONTROLES CENTRALIZADOS E ESTILIZADOS */
+.controls container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 800px;
+  margin: 40px auto;
+  border: 1px solid #e0e0e0;
+}
+
+.controls input, select {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  border: 2px solid #6096BA;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #274C77;
+  background-color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.controls input:focus, 
+.controls select:focus {
+  outline: none;
+  border-color: #274C77;
+  box-shadow: 0 0 0 3px rgba(39, 76, 119, 0.2);
+}
+
+.controls select {
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+}
+
+.controls container h2 {
+  color: #274C77;
+  margin: 0 0 10px 0;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+/* Layout responsivo */
+@media (max-width: 768px) {
+  .controls-container {
+    margin: 20px;
+    padding: 20px;
+  }
+  
+  .controls-input,
+  .controls-select {
+    max-width: 100%;
+  }
+}
+
+/* LISTA DE CLIENTES EM GRID 5x2 */
+.lista-clientes {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  margin-top: 5%;
+  margin-left: 15vh;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--secundaria);
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+/* BADGE VCP */
+.card p:last-child {
+  color: var(--header);
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 0.8rem;
+}
+
+/* PAGINAÇÃO */
+.paginacao {
+  text-align: center;
+  padding: 20px;
+  color: var(--header);
+  grid-column: 1 / -1;
+}
+
+/* RESPONSIVIDADE - AJUSTE PARA TELAS MENORES */
+@media (max-width: 1600px) {
+  .lista-clientes {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1200px) {
+  .lista-clientes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .lista-clientes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .lista-clientes {
+    grid-template-columns: 1fr;
+  }
+  
+  .header h1 {
+    font-size: 1.3rem;
+  }
+}
