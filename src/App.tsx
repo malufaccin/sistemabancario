@@ -48,7 +48,7 @@ export default function App() {
   const totalPaginas = Math.ceil(clientesFiltrados.length / 10); // cada página com 10 cards apenas
   const clientesPagina = clientesFiltrados.slice((pagina - 1) * 10, pagina * 10); //divide o arquivo de 10 em 10 (slice)
 
-  //retornat agencias e contas do cliente para apresentar
+  //retornar agências e contas do cliente para apresentar
   const agenciaCliente = (cliente: Cliente) => 
     agencias.find((a) => a.codigo === cliente.codigoAgencia)!;
   const contasCliente = (cliente: Cliente) =>

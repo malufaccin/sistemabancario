@@ -1,15 +1,16 @@
 import Papa, { ParseResult } from "papaparse";
 import { Cliente, Conta, Agencia } from "../types/types";
 
-function carregarCSV<T>(path: string, tipo: "cliente" | "conta" | "agencia"): Promise<T[]> {
-  return new Promise((resolve, reject) => { //usar a biblioteca papaparse pra processar os arquivos csv
-    Papa.parse(path, {
-      download: true, //baixar arquivo
-      header: true, //usar a 1ª linha como header
-      skipEmptyLines: true, //pular linhas vazias
+//fazer parsing dos dados usando papaparse
+function carregarCSV<T>(url: string, tipo: "cliente" | "conta" | "agencia"): Promise<T[]> {
+  return new Promise((resolve, reject) => {
+    Papa.parse(url, {
+      download: true, //baixar em tempo de execução
+      header: true, //1ª linha se torna cabeçalho
+      skipEmptyLines: true, //pula linhas vazias 
       complete: (results: ParseResult<any>) => {
-        try {
-          const dadosConvertidos = results.data.map((item: any) => { //fazer conversões necessárias para processamento dos dados
+        try { //converter dados de string pra number e date
+          const dadosConvertidos = results.data.map((item: any) => {
             if (tipo === "cliente") {
               return {
                 ...item,
@@ -38,7 +39,7 @@ function carregarCSV<T>(path: string, tipo: "cliente" | "conta" | "agencia"): Pr
 
             return item;
           });
-
+//em caso de erro aparece mensagem (procedimento padrao)
           resolve(dadosConvertidos);
         } catch (e) {
           reject(new Error("Erro ao converter dados: " + (e as string)));
@@ -50,17 +51,19 @@ function carregarCSV<T>(path: string, tipo: "cliente" | "conta" | "agencia"): Pr
     });
   });
 }
-//tratamento de erros ^
 
-//carregar dados dos arquivos csv 
+// Pegar os dados assincronamente das tabelas que foram disponibilizadas
 export async function carregarClientes() {
-  return carregarCSV<Cliente>("/clientes.csv", "cliente");
+  const url = "https://docs.google.com/spreadsheets/d/1PBN_HQOi5ZpKDd63mouxttFvvCwtmY97Tb5if5_cdBA/gviz/tq?tqx=out:csv&sheet=clientes";
+  return carregarCSV<Cliente>(url, "cliente");
 }
 
 export async function carregarContas() {
-  return carregarCSV<Conta>("/contas.csv", "conta");
+  const url = "https://docs.google.com/spreadsheets/d/1PBN_HQOi5ZpKDd63mouxttFvvCwtmY97Tb5if5_cdBA/gviz/tq?tqx=out:csv&sheet=contas";
+  return carregarCSV<Conta>(url, "conta");
 }
 
 export async function carregarAgencias() {
-  return carregarCSV<Agencia>("/agencias.csv", "agencia");
+  const url = "https://docs.google.com/spreadsheets/d/1PBN_HQOi5ZpKDd63mouxttFvvCwtmY97Tb5if5_cdBA/gviz/tq?tqx=out:csv&sheet=agencias";
+  return carregarCSV<Agencia>(url, "agencia");
 }

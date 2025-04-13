@@ -99,6 +99,8 @@ button {
 }
 
 .card {
+  min-height: 160px;
+  will-change: transform;
   background: white;
   border: 1px solid var(--secundaria);
   padding: 15px;

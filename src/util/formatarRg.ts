@@ -3,7 +3,7 @@
 export function formatarRg(valor: string): string {
   console.log('Valor recebido:', valor);
 
-  const num = valor.replace(/\D/g, ''); // Remove caracteres não numérico
+  const num = valor.replace(/\D/g, ''); // remove caracteres não numéricos
   
   if (num.length === 7) {
     // RG 123456-7

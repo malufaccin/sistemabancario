@@ -3,7 +3,7 @@
 export function formatarCpfCnpj(valor: string): string {
   console.log('Valor recebido:', valor);
 
-  const num = valor.replace(/\D/g, ''); // Remove caracteres não numérico
+  const num = valor.replace(/\D/g, ''); // remove caracteres não numéricos
   
   if (num.length === 11) {
     // CPF: 000.000.000-00
@@ -15,5 +15,5 @@ export function formatarCpfCnpj(valor: string): string {
     return num.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
   }
 
-  return valor; // Caso não seja um CPF nem um CNPJ, retorna o valor original
+  return valor; // caso não seja um CPF nem um CNPJ, retorna o valor original
 }

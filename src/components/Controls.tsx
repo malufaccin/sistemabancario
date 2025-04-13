@@ -1,4 +1,4 @@
-//criar filtros de pesquisa por nome/cpf e agencias
+//criar filtros de pesquisa por nome/cpf e agências
 export function Controls({
   onSearch,
   onFilter,
@@ -8,7 +8,7 @@ export function Controls({
 }) {
   return (
     <div className="controls">
-  <div className="container"> {/* Adicionei este container */}
+  <div className="container"> 
     <input
       type="text"
       placeholder="Buscar por nome ou CPF/CNPJ"
