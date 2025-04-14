@@ -52,7 +52,8 @@ export default function App() {
   const agenciaCliente = (cliente: Cliente) => 
     agencias.find((a) => a.codigo === cliente.codigoAgencia)!;
   const contasCliente = (cliente: Cliente) =>
-    contas.filter((c) => c.id === cliente.id);
+    contas.filter((c) => c.cpfCnpjCliente === cliente.cpfCnpj);
+  
 
   //caso o site demore carregar, aparecerá uma mensagem
   if (!clientes.length || !contas.length || !agencias.length) {
