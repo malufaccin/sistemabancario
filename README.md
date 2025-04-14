@@ -1,54 +1,69 @@
-# React + TypeScript + Vite
+# Sistema de Listagem de Clientes Bancários
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é uma aplicação web responsiva, desenvolvida com **React**, **TypeScript** e **CSS**, voltada para exibição e filtragem de informações de clientes bancários. Os dados são consumidos de forma assíncrona e manipulados com eficiência, garantindo uma experiência fluida e intuitiva para o usuário final.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidades
 
-## Expanding the ESLint configuration
+- Consumo assíncrono de dados por meio da `Fetch API`.
+- Conversão de arquivos CSV em objetos JavaScript utilizando a biblioteca [PapaParse](https://www.papaparse.com/).
+- Formatação automática de documentos como CPF, CNPJ e RG.
+- Tratamento de erros com exibição de mensagens amigáveis e claras.
+- Indicação visual de carregamento enquanto os dados são processados.
+- Lista de clientes com exibição de informações essenciais:
+  - Nome completo
+  - CPF
+  - Email
+  - Agência
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Filtros e Paginação
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Filtros de pesquisa por:
+  - Nome
+  - CPF
+  - Agência
+- Paginação com limite de 10 clientes por página.
+- Botões de navegação "Anterior" e "Próximo" com as seguintes regras:
+  - "Anterior" aparece apenas a partir da segunda página.
+  - "Próximo" é desativado ao atingir a última página.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Interface
+
+- Responsiva: adaptada para diferentes tamanhos de tela.
+- Acessível: estrutura semântica, contrastes adequados e navegação por teclado.
+- Intuitiva: foco na usabilidade e clareza das informações.
+
+---
+
+## Código e Arquitetura
+
+- Projeto desenvolvido com **TypeScript** para maior segurança e organização.
+- Estilização com **CSS puro**, mantendo leveza e desempenho.
+- Código limpo, modularizado e bem comentado, seguindo boas práticas de desenvolvimento.
+- Testes de carregamento e performance realizados por meio das **DevTools**.
+
+---
+
+## Regras de Dados
+
+- Clientes com informações de **agências inválidas** são **omitidos da exibição**, mas **mantidos no banco de dados**.
+- Clientes que **não informaram CPF e/ou RG** terão os campos exibidos como `"Não informado"`.
+
+---
+
+## Paleta de Cores Utilizada
+
+| Elemento        | Cor Hex   |
+|-----------------|-----------|
+| Fundo (body)    | `#E7ECEF` |
+| Cabeçalho       | `#274C77` |
+| Destaques       | `#6096BA` |
+| Secundária      | `#A3CEF1` |
+| Cinza neutro    | `#8B8C89` |
+
+---
