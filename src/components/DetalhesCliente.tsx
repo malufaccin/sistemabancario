@@ -32,7 +32,7 @@ export function DetalhesCliente({ cliente, contas, agencia, onVoltar }: Props) {
 
       <h2>Conta(s) Bancária(s)</h2>
       {contas.length === 0 ? (
-        <p>Este cliente não possui contas bancárias.</p>
+        <p>Conta não encontrada. Verifique se os dados foram inseridos corretamente</p>
       ) : (
         contas.map(conta => (
           <div key={conta.id} style={{ marginBottom: "15px" }}>
