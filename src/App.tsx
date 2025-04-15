@@ -1,6 +1,7 @@
 import { Cliente, Conta, Agencia } from "./types/types";
 import { Header } from "./components/Header";
-import { Controls } from "./components/Controls"; // import novo
+import { Controls } from "./components/Controls"; 
+import { formatarCpfCnpj } from "./util/formatarCpfCnpj";
 import { ClienteCard } from "./components/ClienteCard";
 import { Paginacao } from "./components/Paginacao";
 import { DetalhesCliente } from "./components/DetalhesCliente";
@@ -52,7 +53,10 @@ export default function App() {
   const agenciaCliente = (cliente: Cliente) => 
     agencias.find((a) => a.codigo === cliente.codigoAgencia)!;
   const contasCliente = (cliente: Cliente) =>
-    contas.filter((c) => c.cpfCnpjCliente === cliente.cpfCnpj);
+    contas.filter((c) =>
+      formatarCpfCnpj(c.cpfCnpjCliente) === formatarCpfCnpj(cliente.cpfCnpj) //houve uma alteração na planilha no meio do processo e foram inseridos cpf já com pontuação, tive que fazer esse ajuste para aparecer as contas
+    );
+  
   
 
   //caso o site demore carregar, aparecerá uma mensagem
