@@ -94,7 +94,7 @@ button {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 15px;
-  margin-left: 15vh;
+  margin-left: 10vh;
   margin-bottom: 20px;
 }
 
@@ -131,6 +131,8 @@ button {
   margin-right: 20px;
 }
 
+/* responsividade */
+
 @media (min-width: 768px) {
   .controls .container {
     flex-direction: row;
@@ -157,6 +159,8 @@ button {
 @media (max-width: 900px) {
   .lista-clientes {
     grid-template-columns: repeat(2, 1fr);
+    margin-left: 2vh;
+    margin-right: 2vh;
   }
 }
 
@@ -175,6 +179,7 @@ button {
 @media (max-width: 600px) {
   .lista-clientes {
     grid-template-columns: 1fr;
+    margin-left: 1vh;
   }
   
   .header h1 {
