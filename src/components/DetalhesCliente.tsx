@@ -8,7 +8,7 @@ import {formatarRg} from "../util/formatarRg";
 interface Props {
   cliente: Cliente;
   contas: Conta[];
-  agencia: Agencia;
+  agencia ?: Agencia;
   onVoltar: () => void;
 }
 
@@ -45,12 +45,22 @@ export function DetalhesCliente({ cliente, contas, agencia, onVoltar }: Props) {
         ))
       )}
 
-      <h2>Agência</h2>
-      <p><strong>Nome:</strong> {agencia.nome}</p>
-      <p><strong>Endereço:</strong> {agencia.endereco}</p>
-      <p><strong>Código:</strong> {agencia.codigo}</p>
-      <button onClick={onVoltar} style={{ marginBottom: "20px" }}>← Voltar</button>
-    </div>
+        <h2>Agência</h2>
 
+        {agencia ? (
+          <>
+            <p><strong>Nome:</strong> {agencia.nome}</p>
+            <p><strong>Endereço:</strong> {agencia.endereco}</p>
+            <p><strong>Código:</strong> {agencia.codigo}</p>
+          </>
+        ) : (
+          <p>
+            Os dados da agência informada estão incorretos ou não foram encontrados.
+          </p>
+        )}
+
+        <button onClick={onVoltar} style={{ marginBottom: "20px" }}>← Voltar</button>
+
+        </div>
   );
 }
