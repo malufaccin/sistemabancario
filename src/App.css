@@ -12,8 +12,11 @@ body {
   background: var(--bg-body);
   margin: 0;
   padding: 0;
-  margin-top: 20px;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  margin-top: 0; 
 }
 
 .header {
@@ -37,14 +40,14 @@ body {
 }
 
 section.conteudo-principal {
-  padding-top: 90px;
+  padding-top: 9vh; 
   padding-left: 16px;
   padding-right: 16px;
 }
 
 .main-content {
   width: 100%; 
-  margin-top: 70px; 
+  margin-top: 0; 
   padding: 20px;
 }
 
@@ -91,12 +94,54 @@ button {
   border: 2px solid #6096BA;
 }
 
-.lista-clientes {
+.cabecalho-lista {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 15px;
-  margin-left: 10%;
-  margin-bottom: 20px;
+  grid-template-columns: 1.5fr 2fr 1.5fr 1.5fr; 
+  background-color: var(--header);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px 8px 0 0;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.linha-cliente {
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 1.5fr 1.5fr; 
+  align-items: center;
+  padding: 12px 16px;
+  background: white;
+  border-bottom: 1px solid var(--secundaria);
+}
+
+.linha-cliente span {
+  white-space: normal; 
+  overflow: visible;
+  text-overflow: clip;
+  padding: 4px 0;
+}
+
+
+.linha-cliente button:hover {
+  background-color: var(--header);
+}
+
+.linha-cliente {
+  box-shadow: none;
+  border-radius: 0;
+  border: none;
+}
+
+.lista-clientes > div:last-child {
+  border-radius: 0 0 8px 8px;
+  border-bottom: none;
+}
+
+.controls {
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 16px;
 }
 
 .card {
@@ -140,58 +185,87 @@ button {
 @media (min-width: 768px) {
   .controls .container {
     flex-direction: row;
+    width: 100%;
+    max-width: 800px; 
   }
 
   .controls input,
   .controls select {
     flex: 1;
   }
+
+  .lista-clientes {
+    width: calc(100% - 32px);
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 1600px) {
   .lista-clientes {
     grid-template-columns: repeat(4, 1fr);
+    max-width: 1200px; 
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 1200px) {
   .lista-clientes {
     grid-template-columns: repeat(3, 1fr);
+    max-width: 900px;
   }
 }
 
 @media (max-width: 900px) {
   .lista-clientes {
     grid-template-columns: repeat(2, 1fr);
-    margin-left: 2vh;
-    margin-right: 2vh;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 2vh;
+  }
+
+  .controls {
+    max-width: 600px;
   }
 }
 
 @media (max-width: 768px) {
-  .controls-container {
-    margin: 20px;
-    padding: 20px;
-  }
-  
-  .controls-input,
-  .controls-select {
+  .controls .container {
     max-width: 100%;
+    padding: 0 20px;
+  }
+  .controls {
+    width: calc(100% - 40px);
+    margin: 20px auto;
   }
 }
 
 @media (max-width: 600px) {
   .lista-clientes {
     grid-template-columns: 1fr;
-    margin-left: 1vh;
+    max-width: 400px;
+    padding: 0 1vh;
   }
-  
+
   .header h1 {
     font-size: 5vh;
+    text-align: center; 
   }
+
   .paginacao {
-    padding: 10px; 
-    margin:0;
-    font-size: 14px; 
+    padding: 10px;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .linha-cliente {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .linha-cliente button {
+    width: 100%;
+    margin-top: 8px;
   }
 }

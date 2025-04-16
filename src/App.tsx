@@ -66,7 +66,13 @@ export default function App() {
       {!clienteSelecionado ? (
         <section className="conteudo-principal">
           <Controls onSearch={setTermoBusca} onFilter={setFiltroAgencia} />
-  
+          <div className="cabecalho-lista">
+          <span>Nome</span>
+          <span>CPF/CNPJ</span>
+          <span>Agência</span>
+          <span>Ações</span>
+          </div>
+
           <div className="lista-clientes" style={{ paddingTop: "10px" }}>
             {clientesPagina.map((cliente) => (
               <ClienteCard
