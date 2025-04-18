@@ -7,10 +7,10 @@ interface Props {
 
 export function Paginacao({ paginaAtual, totalPaginas, onAnterior, onProxima }: Props) {
   return (
-    <div className="paginacao">
+    <div className="paginacao"> 
       <button id="paginas" onClick={onAnterior} disabled={paginaAtual === 1}>
         ← Anterior
-      </button>
+      </button> 
       <span> {paginaAtual} de {totalPaginas}</span>
       <button id="paginas" onClick={onProxima} disabled={paginaAtual === totalPaginas}>
         Próxima →
@@ -18,3 +18,4 @@ export function Paginacao({ paginaAtual, totalPaginas, onAnterior, onProxima }: 
     </div>
   );
 }
+// só é possivel voltar a partir da página 2 e não é possivel passar após o fim dos dados

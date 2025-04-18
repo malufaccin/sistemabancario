@@ -14,7 +14,6 @@ interface Props {
 
 export function DetalhesCliente({ cliente, contas, agencia, onVoltar }: Props) {
   return (
-
     <div className="detalhes" style={{ padding: "20px" }}>
       <h2>Informações do Cliente</h2>
       <p><strong>Nome:</strong> {cliente.nome}</p>
@@ -31,7 +30,7 @@ export function DetalhesCliente({ cliente, contas, agencia, onVoltar }: Props) {
       <hr style={{ margin: "20px 0" }} />
 
       <h2>Conta(s) Bancária(s)</h2>
-      {contas.length === 0 ? (
+      {contas.length === 0 ? ( //tratamento para caso não encontre contas ou dados sejam inseridos incorretamente, foi necessário devido muitos usuários não terem cpf preenchido
         <p>Conta não encontrada. Verifique se os dados foram inseridos corretamente</p>
       ) : (
         contas.map(conta => (
@@ -53,8 +52,8 @@ export function DetalhesCliente({ cliente, contas, agencia, onVoltar }: Props) {
             <p><strong>Endereço:</strong> {agencia.endereco}</p>
             <p><strong>Código:</strong> {agencia.codigo}</p>
           </>
-        ) : (
-          <p>
+        ) : (  //para os clientes que informaram a agência incorreta
+          <p> 
             Os dados da agência informada estão incorretos ou não foram encontrados.
           </p>
         )}

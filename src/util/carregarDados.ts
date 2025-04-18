@@ -28,7 +28,10 @@ async function carregarCSV<T>(url: string, tipo: "cliente" | "conta" | "agencia"
             creditoDisponivel: +item.creditoDisponivel,
           } as Conta;
         case "agencia":
-          return { ...item, codigo: +item.codigo } as Agencia;
+          return { 
+            ...item, 
+            codigo: +item.codigo 
+          } as Agencia;
         default:
           return item;
       }
